@@ -11,7 +11,8 @@ body {
 	flex-wrap: wrap;
 }
 
-input,button {
+input,
+button {
 	padding: 8px 12px;
 	border-radius: 6px;
 	border: 1px solid #ccc;
@@ -34,6 +35,8 @@ button:hover {
 #cart {
 	list-style: none;
 	padding: 0;
+	margin: 1rem 0;
+	border-top: 2px solid #ddd;
 }
 
 .cart-item {
@@ -41,10 +44,27 @@ button:hover {
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 10px;
+	background: white;
+	padding: 12px 16px;
+	border-radius: 10px;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+	gap: 12px;
+	flex-wrap: wrap;
 }
 
 .cart-item span {
 	flex: 1;
+	min-width: 140px;
+}
+
+.cart-item span:first-child {
+	font-weight: 600;
+}
+
+.cart-item .item-price {
+	font-weight: 600;
+	min-width: 80px;
+	text-align: right;
 }
 
 .cart-item button {
