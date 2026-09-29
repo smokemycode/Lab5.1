@@ -1,6 +1,6 @@
 ## Reflection Questions
 1. How did you dynamically create and append new elements to the DOM? 
-  I used document.createElement() to build each part of a cart item, assembled them with appendChild(), and    appended the finished <li> to the #cart list.
+  I used document.createElement() to build each part of a cart item, assembled them with appendChild(), and    appended the finished < li > to the #cart list.
 2. What steps did you take to ensure accurate updates to the total price?
   Instead of incremental math, I wrote a single recalcTotalFromCart() function that loops through all .cart-   item elements and sums price × quantity every time the cart changes.
 3. How did you handle invalid input for product name or price?
