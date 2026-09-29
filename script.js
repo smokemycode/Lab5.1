@@ -1,23 +1,36 @@
-const productNameInput = document.getElementById('product-name');
-const productPriceInput = document.getElementById('product-price');
-const addProductButton = document.getElementById('add-product');
-const cart = document.getElementById('cart');
-const totalPriceSpan = document.getElementById('total-price');
- 
+const productNameInput = document.getElementById("product-name");
+const productPriceInput = document.getElementById("product-price");
+const addProductButton = document.getElementById("add-product");
+const cart = document.getElementById("cart");
+const totalPriceSpan = document.getElementById("total-price");
+
 let totalPrice = 0;
- 
+
 // Function to update the total price
 function updateTotalPrice(amount) {
-  totalPrice += amount;
-  totalPriceSpan.textContent = totalPrice.toFixed(2);
+	totalPrice += amount;
+	totalPriceSpan.textContent = totalPrice.toFixed(2);
 }
- 
+
 // Function to remove an item
 function removeItem(event) {
-  const item = event.target.closest('li');
-  const price = parseFloat(item.dataset.price);
-  updateTotalPrice(-price);
-  item.remove();
+	const item = event.target.closest("li");
+	const price = parseFloat(item.dataset.price);
+	updateTotalPrice(-price);
+	item.remove();
+}
+
+// Recalculate Total from all cart Items
+function recalcTotalFromCart() {
+	let sum = 0;
+	const items = cart.querySelectorAll(".cart-item");
+	items.forEach((item) => {
+		const price = parseFloat(item.dataset.price) || 0;
+		const qty = parseInt(item.dataset.quantity, 10) || 1;
+		sum += price * qty;
+	});
+	totalPrice = sum;
+    totalPriceSpan.textContent = totalPrice.toFixed(2);
 }
 
 // Create a cart item
@@ -143,3 +156,23 @@ productNameInput.focus();
 }
 
 addProductButton.addEventListener("click", handleAddProduct);
+
+productPriceInput.addEventListener("keypress", (e) => {
+	if (e.key === "Enter") {
+		e.preventDefault();
+		handleAddProduct();
+	}
+});
+productNameInput.addEventListener("keypress", (e) => {
+	if (e.key === "Enter") {
+		e.preventDefault();
+		// Move focus to price field if name is filled
+		if (productNameInput.value.trim() !== "") {
+			productPriceInput.focus();
+		} else {
+			handleAddProduct();
+		}
+	}
+});
+
+recalcTotalFromCart();
