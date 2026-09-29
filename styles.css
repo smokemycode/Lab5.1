@@ -61,10 +61,45 @@ button:hover {
 	font-weight: 600;
 }
 
+.cart-item .quantity-controls {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex: 0 0 auto;
+}
+
+.quantity-controls button {
+	padding: 2px 12px;
+	font-size: 1.2rem;
+	line-height: 1;
+	background: #eef2f9;
+	color: #1e1e2f;
+	border: 1px solid #b0c4de;
+}
+
+.quantity-controls button:hover {
+	background: #d0ddef;
+}
+
 .cart-item .item-price {
 	font-weight: 600;
 	min-width: 80px;
 	text-align: right;
+}
+
+.cart-item .remove-btn {
+	background: #f44336;
+	padding: 6px 16px;
+}
+
+.cart-item .remove-btn:hover {
+	background: #b71c1c;
+}
+
+#total-price {
+	font-weight: 700;
+	font-size: 1.3rem;
+	color: #0b3d91;
 }
 
 .cart-item button {
